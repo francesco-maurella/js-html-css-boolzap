@@ -23,7 +23,9 @@
   width: 100vw;
   height: 100vh;
   min-width: 950px;
-  background: linear-gradient(#009688 15%, #DADBD3 15%);
+  font-family: 'Oxygen';
+  font-size: 13px;
+  background: linear-gradient(#009688 16%, #DADBD3 16%);
 }
 
 /* APP CONTAINER */
@@ -48,6 +50,19 @@
 
 .main-right-sd {
   height: calc(100% - 77px);
+  background-color: #E5DDD5;
+  box-shadow: inset 3px -3px 3px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.main-right-sd:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/00-bg.png');
+  opacity: 0.09;
+  top: 0;
+  position: absolute;
 }
 
 .bottom-right-sd {
