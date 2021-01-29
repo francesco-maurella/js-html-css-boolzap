@@ -1,42 +1,67 @@
+/* RESET Css */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Utility CSS */
-.flx {
-  display: flex;
+body {
+  font-family: 'Oxygen';
+  font-size: 13px;
+  line-height: 1.8em;
 }
+/* / RESET Css */
 
-.al-cntr {
-  align-items: center;
-}
+/* UTILITY CSS */
+  /* Display (visual & position) */
+  .flx {
+    display: flex;
+  }
+  .al-cntr {
+    align-items: center;
+  }
+  .centered {
+    justify-content: center;
+    align-items: center;
+  }
+  .ofw-auto {
+    overflow: auto;
+  }
+  /* / Display (visual & position) */
 
-.centered {
-  justify-content: center;
-  align-items: center;
-}
+  /* Spaces (margin & padding) */
+  .kern16 > * {
+    margin-right: 16px;
+  }
+  .pdd-15 {
+    padding: 15px;
+  }
+  /* / Spaces (margin & padding) */
 
-.kern15 > *:not(:last-child) {
-  margin-right: 15px;
-}
+  /* Text proprieties */
+  .txt-1x1 {
+    font-size: 1.1em;
+  }
+  .txt-1x5 {
+    font-size: 1.5em;
+  }
+  .txt-0x9 {
+    font-size: 0.9em;
+  }
+  .txt-col-gray {
+    color: #A0A0A0;
+  }
+  /* / Text proprieties */
+/* / UTILITY CSS */
 
-.ofw-auto {
-  overflow: auto;
-}
-/* / Utility CSS */
-
+/* APP CONTAINER */
 .wrapper {
   width: 100vw;
   height: 100vh;
   min-width: 950px;
-  font-family: 'Oxygen';
-  font-size: 13px;
   background: linear-gradient(#009688 16%, #DADBD3 16%);
 }
 
-/* APP CONTAINER */
 .container {
   width: 90%;
   height: 95%;
@@ -46,7 +71,6 @@
 
 .user-bar {
   height: 80px;
-  padding: 15px;
   background: #EAEAEA;
   justify-content: space-between;
 }
@@ -55,13 +79,20 @@
   height: 50px;
   border-radius: 50%;
 }
-
-
 /* Left side */
 .left-sd {
   width: 30%;
-  background: #B5D8E7;
-  border-right: 1px solid rgba(175, 175, 175, 0.2);
+  border-right: 1px solid #C8C8C8;
+}
+
+.alerts {
+  background-color: #8EDAFC;
+}
+
+.circle-ico{
+  color: #8EDAFC;
+  border-radius: 50%;
+  background-color: #FFF;
 }
 /* / Left side */
 

@@ -5,11 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>HTML/CSS/JAVASCRIPT - SINGLE PAGE APP [Boolzap]</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts link -->
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Fontawesome Icons link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Jquery library link -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- VueJS framework link -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" charset="utf-8"></script>
     <link rel="icon" href="img/00-ico.png">
   </head>
@@ -18,38 +24,76 @@
     <div class="wrapper flx centered">
       <!-- APP CONTAINER -->
       <div id="#app" class="container flx">
-        <!-- Left side-->
-        <header class="left-sd ofw-auto">
-          <section class="user-bar flx">
-            <div class="user-data flx al-cntr kern15">
+        <!-- LEFT Side-->
+        <header class="left-sd">
+
+          <!-- User-bar: data & links -->
+          <section class="user-bar pdd-15 flx">
+            <!-- user data -->
+            <div class="user-data flx al-cntr kern16">
               <img src="img/01.jpg" alt="user">
-              <span>Nome Utente</span>
+              <div>
+                <span class="txt-1x1">Nome Utente</span>
+              </div>
             </div>
-            <nav class="user-nav flx al-cntr kern15">
+            <!-- / user data -->
+            <!-- user links -->
+            <nav class="user-nav flx al-cntr kern16 txt-1x5 txt-col-gray">
               <i class="fas fa-circle-notch"></i>
               <i class="fas fa-comment-alt"></i>
               <i class="fas fa-ellipsis-v"></i>
             </nav>
+            <!-- / user links -->
           </section>
+          <!-- / User-bar: data & links -->
+
+          <!-- Alerts section -->
+          <section class="alerts pdd-15 kern16 flx">
+            <div>
+              <i class="fas fa-bell-slash circle-ico txt-1x5 pdd-15"></i>
+            </div>
+            <div>
+              <div class="txt-1x1">Ricevi notifiche di nuovi messaggi</div>
+              <div class="txt-col-gray">Attiva notifiche descktop</div>
+            </div>
+
+
+          </section>
+          <!-- / Alerts section -->
+
+          <!-- User list -->
+          <section class="ofw-auto">
+
+          </section>
+          <!-- / User list -->
         </header>
-        <!-- / Left side -->
-        <!-- Right side -->
+        <!-- / LEFT Side -->
+
+        <!-- RIGHT Side -->
         <div class="right-sd">
           <!-- main content -->
           <main>
-            <section class="user-bar flx">
-              <div class="user-data flx al-cntr kern15">
+            <!-- user-bar: data & links -->
+            <section class="user-bar pdd-15 flx">
+              <!-- user data -->
+              <div class="user-data flx al-cntr kern16">
                 <img src="img/01.jpg" alt="user">
-                <span>Nome Utente</span>
+                <div>
+                  <div class="txt-1x1">Nome Utente</div>
+                  <div class="txt-0x9 txt-col-gray">Ultimo accesso</div>
+                </div>
               </div>
-              <nav class="user-nav flx al-cntr kern15">
+              <!-- / user data -->
+              <!-- user links -->
+              <nav class="user-nav flx al-cntr kern16 txt-1x5 txt-col-gray">
                 <i class="fas fa-search"></i>
                 <i class="fas fa-paperclip"></i>
                 <i class="fas fa-ellipsis-v"></i>
               </nav>
+              <!-- / user links -->
             </section>
-            <section class="main-discuss">
-
+            <!-- / user-bar: data & links -->
+            <section class="main-discuss ofw-auto">
               <div>Bla</div>
               <div>Bla</div>
               <div>Bla</div>
@@ -61,12 +105,12 @@
             </section>
           </main>
           <!-- / main content -->
-          <!-- bottom bar -->
+          <!-- Bottom bar -->
           <footer class="bottom-right-sd">
           </footer>
-          <!-- / bottom bar -->
+          <!-- / Bottom bar -->
         </div>
-        <!-- / Right side -->
+        <!-- / RIGHT Side -->
       </div>
       <!-- / APP CONTAINER -->
     </div>
