@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Utility CSS */
+.flx {
+  display: flex;
+}
+
+.centered {
+  justify-content: center;
+  align-items: center;
+}
+
+.ofw-auto {
+  overflow: auto;
+}
+/* / Utility CSS */
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  min-width: 950px;
+  background: linear-gradient(#009688 15%, #DADBD3 15%);
+}
+
+/* APP CONTAINER */
+.container {
+  width: 80%;
+  height: 95%;
+  background: #FFF;
+}
+
+/* Left side */
+.left-sd-bar {
+  width: 25%;
+  background: #B5D8E7;
+}
+/* / Left side */
+
+/* Right side */
+.right-sd-bar {
+  width: calc(100% - 25%);
+}
+
+.main-right-sd {
+  height: calc(100% - 120px);
+}
+
+.bottom-right-sd {
+  height: 120px;
+  border-top: 1px solid #000;
+  background: #CCC;
+}
+/* / Right side */
