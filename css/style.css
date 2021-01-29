@@ -28,30 +28,30 @@
 
 /* APP CONTAINER */
 .container {
-  width: 80%;
+  width: 90%;
   height: 95%;
   background: #FFF;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
 }
 
 /* Left side */
-.left-sd-bar {
-  width: 25%;
+.left-sd {
+  width: 30%;
   background: #B5D8E7;
 }
 /* / Left side */
 
 /* Right side */
-.right-sd-bar {
-  width: calc(100% - 25%);
+.right-sd {
+  width: calc(100% - 30%);
 }
 
 .main-right-sd {
-  height: calc(100% - 120px);
+  height: calc(100% - 77px);
 }
 
 .bottom-right-sd {
-  height: 120px;
-  border-top: 1px solid #000;
-  background: #CCC;
+  height: 77px;
+  background: #F0F0F0;
 }
 /* / Right side */
