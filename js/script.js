@@ -92,6 +92,13 @@ new Vue({
     },
     // METODI //
     methods : {
+      getLastMessage : function(element){
+        let lastMessage;
+        element.messages.forEach((item, i) => {
+          lastMessage = item.text
+        });
+        return lastMessage;
+      }
 
     }
   });

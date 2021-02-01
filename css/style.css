@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Oxygen';
+  font-family: 'Noto Sans';
   font-size: 13px;
   line-height: 1.8em;
 }
@@ -72,6 +72,20 @@ body {
     color: #A0A0A0;
   }
   /* / Text proprieties */
+
+  /* Scrollbars */
+  .ofw-y::-webkit-scrollbar {
+  width: 5px;
+}
+
+  .ofw-y::-webkit-scrollbar-track {
+  background: #FFF;
+}
+
+  .ofw-y::-webkit-scrollbar-thumb {
+  background: #CCC;
+}
+  /* / Scrollbars */
 
   /* Common sections */
   .user-bar {
@@ -175,6 +189,9 @@ body {
 
 .user-data {
   width: 100%;
+  flex-direction: column;
+  justify-content: center;
+
   border-bottom: 1px solid #F2F2F2;
 }
 /* / User list */
@@ -213,7 +230,7 @@ body {
   background-color: #FFF;
   padding: 5px;
   border-radius: 6px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .right .chat-box{

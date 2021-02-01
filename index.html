@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google Fonts link -->
-    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <!-- Fontawesome Icons link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
     <!-- VueJS framework link -->
@@ -23,7 +23,6 @@
       <div id="app" class="container flx">
         <!-- LEFT Side-->
         <div class="left-sd">
-
           <!-- User-bar: data & links -->
           <section class="user-bar pdd-15 flx">
             <!-- user data -->
@@ -68,12 +67,13 @@
           <!-- User list -->
           <section class="user-list ofw-y">
             <!-- user in list -->
-            <div v-for="element in contacts" class="user-list-row kern16 flx">
+            <div v-for="(element, i) in contacts" class="user-list-row kern16 flx">
               <div class="user-avatar">
                 <img :src="'img/avatar' + element.avatar + '.jpg'" class="rounded" alt="user">
               </div>
-              <div class="user-data flx al-cntr">
+              <div class="user-data flx">
                 <span class="txt-1x1">{{element.name}}</span>
+                <span class="txt-0x9 txt-col-gray">{{getLastMessage(element)}}</span>
               </div>
             </div>
             <!-- / user in list -->
