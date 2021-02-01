@@ -52,18 +52,64 @@ body {
     font-size: 1.1em;
   }
 
-  .txt-1x5 {
-    font-size: 1.5em;
+  .txt-1x4 {
+    font-size: 1.4em;
+  }
+
+  .txt-1x6 {
+    font-size: 1.6em;
   }
 
   .txt-0x9 {
     font-size: 0.9em;
   }
 
+  .txt-0x7 {
+    font-size: 0.7em;
+  }
+
   .txt-col-gray {
     color: #A0A0A0;
   }
   /* / Text proprieties */
+
+  /* Common sections */
+  .user-bar {
+    height: 70px;
+    background: #EAEAEA;
+    justify-content: space-between;
+  }
+
+  .user-bar img {
+    height: 45px;
+  }
+
+  .input-container {
+    padding: 5px 15px;
+    background-color: #F6F6F6;
+  }
+
+  .input-container i {
+    opacity: 0.5;
+  }
+
+  .input-box {
+    width: 100%;
+    background-color: #FFF;
+    border-radius: 50px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.03);
+  }
+
+  .input-box input {
+    width: 100%;
+    font-family: inherit;
+    border: 0;
+  }
+
+  .input-box input:focus {
+    outline: none;
+  }
+  /* / Common sections */
 /* / UTILITY CSS */
 
 /* PAGE MAIN-CONTAINERS */
@@ -88,18 +134,6 @@ body {
   border-right: 1px solid #C8C8C8;
 }
 
-/* User-bar: data & links */
-.user-bar {
-  height: 70px;
-  background: #EAEAEA;
-  justify-content: space-between;
-}
-
-.user-bar img {
-  height: 45px;
-}
-/* / User-bar: data & links */
-
 /* Alerts section */
 .alerts {
   min-height: 80px;
@@ -113,31 +147,12 @@ body {
 /* / Alerts section */
 
 /* Search chat */
-.search {
-  background-color: #F6F6F6;
-  padding: 5px;
-  height: 50px;
+.left-sd .input-container {
+  min-height: 50px;
 }
 
-.search-box {
-  background-color: #FFF;
-  padding: 8px 30px;
-  width: 95%;
-  border-radius: 50px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.03);
-}
-
-.search-box .fas {
-  opacity: 0.5;
-}
-
-.search input {
-  width: 100%;
-  border: 0;
-}
-
-.search input:focus {
-  outline: none;
+.left-sd .input-box {
+  padding: 8px 16px;
 }
 /* / Search chat */
 
@@ -172,15 +187,16 @@ body {
 
 /* Main chat area */
 .main-discuss {
-  height: calc(100% - 150px);
+  height: calc(100% - 140px);
   background-color: #E5DDD5;
   background-image: url('../img/00-bg.png');
   position: relative;
 }
 
-.main-discuss > .pdd-15 {
+.main-discuss-container {
   width: 100%;
   height: 100%;
+  padding: 15px 80px;
   background-color: rgba(229, 221, 213, 0.92);
 }
 
@@ -206,9 +222,8 @@ body {
 /* / Main chat area */
 
 /* Bottom bar */
-.bottom-right-sd {
-  height: 80px;
-  background: #F0F0F0;
+.right-sd .input-container {
+  min-height: 70px;
 }
 /* / Bottom bar */
 /* / RIGHT Side */
