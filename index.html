@@ -10,28 +10,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- Fontawesome Icons link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
-    <!-- Jquery library link -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- VueJS framework link -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" charset="utf-8"></script>
     <link rel="icon" href="img/00-ico.png">
   </head>
   <body>
 
     <div class="wrapper flx centered">
       <!-- APP CONTAINER -->
-      <div id="#app" class="container flx">
+      <div id="app" class="container flx">
         <!-- LEFT Side-->
-        <header class="left-sd">
+        <div class="left-sd">
 
           <!-- User-bar: data & links -->
           <section class="user-bar pdd-15 flx">
             <!-- user data -->
-            <div class="user-data flx al-cntr kern16">
-              <img src="img/01.jpg" alt="user">
+            <div class="flx al-cntr kern16">
+              <img src="img/01.jpg" class="rounded" alt="user">
               <div>
                 <span class="txt-1x1">Nome Utente</span>
               </div>
@@ -50,64 +47,87 @@
           <!-- Alerts section -->
           <section class="alerts pdd-15 kern16 flx">
             <div>
-              <i class="fas fa-bell-slash circle-ico txt-1x5 pdd-15"></i>
+              <i class="fas fa-bell-slash rounded txt-1x5 pdd-15"></i>
             </div>
             <div>
               <div class="txt-1x1">Ricevi notifiche di nuovi messaggi</div>
               <div class="txt-col-gray">Attiva notifiche descktop</div>
             </div>
-
-
           </section>
           <!-- / Alerts section -->
 
-          <!-- User list -->
-          <section class="ofw-auto">
+          <!-- Search chat -->
+          <section class="search flx centered">
+            <div class="search-box flx centered kern16">
+              <i class="fas fa-search"></i>
+              <input placeholder="Cerca o inizia una nuova chat">
+            </div>
+          </section>
+          <!-- / Search chat -->
 
+          <!-- User list -->
+          <section class="user-list ofw-y">
+            <!-- user in list -->
+            <div v-for="element in contacts" class="user-list-row kern16 flx">
+              <div class="user-avatar">
+                <img :src="'img/avatar' + element.avatar + '.jpg'" class="rounded" alt="user">
+              </div>
+              <div class="user-data flx al-cntr">
+                <span class="txt-1x1">{{element.name}}</span>
+              </div>
+            </div>
+            <!-- / user in list -->
           </section>
           <!-- / User list -->
-        </header>
+        </div>
         <!-- / LEFT Side -->
 
         <!-- RIGHT Side -->
         <div class="right-sd">
-          <!-- main content -->
-          <main>
-            <!-- user-bar: data & links -->
-            <section class="user-bar pdd-15 flx">
-              <!-- user data -->
-              <div class="user-data flx al-cntr kern16">
-                <img src="img/01.jpg" alt="user">
-                <div>
-                  <div class="txt-1x1">Nome Utente</div>
-                  <div class="txt-0x9 txt-col-gray">Ultimo accesso</div>
+          <!-- User-bar: data & links -->
+          <section class="user-bar pdd-15 flx">
+            <!-- user data -->
+            <div class="flx al-cntr kern16">
+              <img src="img/01.jpg" class="rounded" alt="user">
+              <div>
+                <div class="txt-1x1">Nome Utente</div>
+                <div class="txt-0x9 txt-col-gray">Ultimo accesso</div>
+              </div>
+            </div>
+            <!-- / user data -->
+            <!-- user links -->
+            <nav class="user-nav flx al-cntr kern16 txt-1x5 txt-col-gray">
+              <i class="fas fa-search"></i>
+              <i class="fas fa-paperclip"></i>
+              <i class="fas fa-ellipsis-v"></i>
+            </nav>
+            <!-- / user links -->
+          </section>
+          <!-- / User-bar: data & links -->
+
+          <!-- Main chat area -->
+          <section class="main-discuss ofw-y">
+            <div class="pdd-15">
+              <!-- left column -->
+              <div class="main-discuss-col left flx">
+                <div class="chat-box">
+                  BlaBlaBla
                 </div>
               </div>
-              <!-- / user data -->
-              <!-- user links -->
-              <nav class="user-nav flx al-cntr kern16 txt-1x5 txt-col-gray">
-                <i class="fas fa-search"></i>
-                <i class="fas fa-paperclip"></i>
-                <i class="fas fa-ellipsis-v"></i>
-              </nav>
-              <!-- / user links -->
-            </section>
-            <!-- / user-bar: data & links -->
-            <section class="main-discuss ofw-auto">
-              <div>Bla</div>
-              <div>Bla</div>
-              <div>Bla</div>
-              <div>Bla</div>
-              <div>Bla</div>
-              <div>Bla</div>
-              <div>Bla</div>
-              <div>Bla</div>
-            </section>
-          </main>
-          <!-- / main content -->
+              <!-- / left column -->
+              <!-- right column -->
+              <div class="main-discuss-col right flx">
+                <div class="chat-box">
+                  BlaBlaBla
+                </div>
+              </div>
+              <!-- / right column -->
+            </div>
+          </section>
+          <!-- / Main chat area -->
           <!-- Bottom bar -->
-          <footer class="bottom-right-sd">
-          </footer>
+          <section class="bottom-right-sd">
+          </section>
           <!-- / Bottom bar -->
         </div>
         <!-- / RIGHT Side -->
@@ -115,5 +135,7 @@
       <!-- / APP CONTAINER -->
     </div>
 
+    <script src="js/script.js" charset="utf-8"></script>
+
   </body>
-</html>
+  </html>
