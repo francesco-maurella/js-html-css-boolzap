@@ -28,13 +28,10 @@
             <!-- user data -->
             <div class="flx al-cntr kern16">
               <img src="img/01.jpg" class="rounded" alt="user">
-              <div>
-                <span class="txt-1x1">Nome Utente</span>
-              </div>
             </div>
             <!-- / user data -->
             <!-- user links -->
-            <nav class="user-nav flx al-cntr kern16 txt-1x4 txt-col-gray">
+            <nav class="flx al-cntr kern32 txt-1x4 txt-col-gray">
               <i class="fas fa-circle-notch"></i>
               <i class="fas fa-comment-alt"></i>
               <i class="fas fa-ellipsis-v"></i>
@@ -44,7 +41,7 @@
           <!-- / User-bar: data & links -->
 
           <!-- Alerts section -->
-          <section class="alerts pdd-15 kern16 flx">
+          <section class="alerts pdd-15 kern32 flx">
             <div>
               <i class="fas fa-bell-slash rounded txt-1x4 pdd-15"></i>
             </div>
@@ -67,13 +64,19 @@
           <!-- User list -->
           <section class="user-list ofw-y">
             <!-- user in list -->
-            <div v-for="(element, i) in contacts" class="user-list-row kern16 flx">
+            <div
+            v-for="(elm, i) in contacts"
+            class="user-list-row kern16 flx"
+            @click="selectChat(i)">
               <div class="user-avatar">
-                <img :src="'img/avatar' + element.avatar + '.jpg'" class="rounded" alt="user">
+                <img :src="'img/avatar' + elm.avatar + '.jpg'" class="rounded" alt="user">
               </div>
               <div class="user-data flx">
-                <span class="txt-1x1">{{element.name}}</span>
-                <span class="txt-0x9 txt-col-gray">{{getLastMessage(element)}}</span>
+                <div class="flx">
+                  <span class="txt-1x1">{{elm.name}}</span>
+                  <span class="txt-0x9 txt-col-gray">{{getLastValue(elm, 'date', 5)}}</span>
+                </div>
+                <span class="txt-col-gray">{{getLastValue(elm, 'text', 40)}}</span>
               </div>
             </div>
             <!-- / user in list -->
@@ -88,17 +91,16 @@
           <section class="user-bar pdd-15 flx">
             <!-- user data -->
             <div class="flx al-cntr kern16">
-              <img src="img/01.jpg" class="rounded" alt="user">
+              <img :src="'img/avatar' + contacts[selectedChat].avatar + '.jpg'" class="rounded" alt="user">
               <div>
-                <div class="txt-1x1">Nome Utente</div>
+                <div class="txt-1x1">{{contacts[selectedChat].name}}</div>
                 <div class="txt-0x9 txt-col-gray">Ultimo accesso</div>
               </div>
             </div>
             <!-- / user data -->
             <!-- user links -->
-            <nav class="user-nav flx al-cntr kern16 txt-1x4 txt-col-gray">
+            <nav class="flx al-cntr kern32 txt-1x4 txt-col-gray">
               <i class="fas fa-search"></i>
-              <i class="fas fa-paperclip"></i>
               <i class="fas fa-ellipsis-v"></i>
             </nav>
             <!-- / user links -->
@@ -108,20 +110,15 @@
           <!-- Main chat area -->
           <section class="main-discuss ofw-y">
             <div class="main-discuss-container">
-              <!-- left column -->
-              <div class="main-discuss-col left flx">
-                <div class="chat-box">
-                  BlaBlaBla
+              <div v-for="(el, i) in contacts[selectedChat].messages">
+                <!-- column -->
+                <div class="main-discuss-col flx" :class="el.status">
+                  <div class="chat-box">
+                    {{el.text}}
+                  </div>
                 </div>
+                <!-- column -->
               </div>
-              <!-- / left column -->
-              <!-- right column -->
-              <div class="main-discuss-col right flx">
-                <div class="chat-box">
-                  BlaBlaBla
-                </div>
-              </div>
-              <!-- / right column -->
             </div>
           </section>
           <!-- / Main chat area -->
@@ -129,9 +126,12 @@
           <section class="input-container flx centered kern16 txt-1x6">
             <i class="far fa-grin"></i>
             <i class="fas fa-paperclip"></i>
+            <!-- write message -->
             <div class="input-box pdd-15 flx centerd">
-              <input class="txt-0x7" placeholder="Scrivi un messaggio">
+              <input class="txt-0x7" v-model="myMsg"
+              v-on:keyup.enter="sendMsg" placeholder="Scrivi un messaggio">
             </div>
+            <!-- / write message -->
             <i class="fas fa-microphone"></i>
           </section>
           <!-- / Bottom bar -->

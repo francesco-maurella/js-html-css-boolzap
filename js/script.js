@@ -88,17 +88,30 @@ new Vue({
             }
           ],
         },
-      ]
+      ],
+      selectedChat : 0,
+      myMsg : ''
     },
     // METODI //
     methods : {
-      getLastMessage : function(element){
-        let lastMessage;
-        element.messages.forEach((item, i) => {
-          lastMessage = item.text
+      getLastValue : function(element, value, cut){
+        let last = element.messages[element.messages.length - 1][value].slice(0, cut);
+        if (last.length > 5 && last.length === cut) {
+          last += '...'
+        }
+        return last;
+      },
+      selectChat : function(index){
+        this.selectedChat = index;
+      },
+      sendMsg : function(){
+        const msgs = this.contacts[this.selectedChat].messages;
+        msgs.push({
+          date : '01/02/2020 00:00:00',
+          text : this.myMsg,
+          status : 'sent'
         });
-        return lastMessage;
+        this.myMsg = '';
       }
-
     }
   });

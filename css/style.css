@@ -42,6 +42,10 @@ body {
     margin-right: 16px;
   }
 
+  .kern32 > * {
+    margin-right: 32px;
+  }
+
   .pdd-15 {
     padding: 15px;
   }
@@ -95,7 +99,7 @@ body {
   }
 
   .user-bar img {
-    height: 45px;
+    height: 42px;
   }
 
   .input-container {
@@ -191,8 +195,11 @@ body {
   width: 100%;
   flex-direction: column;
   justify-content: center;
-
   border-bottom: 1px solid #F2F2F2;
+}
+
+.user-data > * {
+  justify-content: space-between;
 }
 /* / User list */
 /* / LEFT Side */
@@ -221,20 +228,24 @@ body {
   width: 100%;
 }
 
-.main-discuss-col.right {
+.sent.main-discuss-col {
  justify-content: flex-end;
 }
 
 .chat-box {
   max-width: 50%;
-  background-color: #FFF;
   padding: 5px;
+  margin-bottom: 15px;
   border-radius: 6px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-.right .chat-box{
+.sent .chat-box{
   background-color: #DCF8C6;
+}
+
+.received .chat-box{
+  background-color: #FFF;
 }
 /* / Main chat area */
 
