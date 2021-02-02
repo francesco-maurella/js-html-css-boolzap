@@ -163,15 +163,6 @@ new Vue({
           ],
         }
       ],
-      // Data corrente
-      currentDate : {
-        day : ('0' + (new Date().getDate()+1)).slice(0, 2),
-        month :  ('0' + (new Date().getMonth()+1)).slice(0, 2),
-        year : new Date().getFullYear(),
-        hour : new Date().getHours(),
-        min: new Date().getMinutes(),
-        sec: new Date().getSeconds()
-      },
       // Index contatto-chat selezionato
       selectedChat : 0,
       // Mio messaggio
@@ -196,7 +187,7 @@ new Vue({
       },
 
       // Funzione ultimo accesso
-      getLastAccess : function (){
+      getLastAccess : function(){
         // recuperiamo array di messaggi dell'index contatto selezionato
         const msgs = this.contacts[this.selectedChat].messages;
         // filtriamone solo i messaggi ricevuti
@@ -207,10 +198,24 @@ new Vue({
         return received[received.length - 1]['date'];
       },
 
+      // Funzione data corrente
+      getCurrentDate : function(){
+        const today = new Date();
+        return {
+          day : ('0' + (today.getDate()+1)).slice(0, 2),
+          month :  ('0' + (today.getMonth()+1)).slice(0, 2),
+          year : today.getFullYear(),
+          hour : today.getHours(),
+          min: today.getMinutes(),
+          sec: today.getSeconds()
+        }
+      },
+
       // Funzione scambio messaggi
       msgPass : function(){
         // destrutturazione data corrente
-        let {day, month, year, hour, min, sec} = this.currentDate;
+        const currentDate = this.getCurrentDate();
+        let {day, month, year, hour, min, sec} = currentDate;
         // recuperiamo array di messaggi dell'index contatto selezionato
         const msgs = this.contacts[this.selectedChat].messages;
         msgs.push({   // invio mio messaggio
