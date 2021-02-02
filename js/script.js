@@ -7,8 +7,81 @@ new Vue({
       // Lista contatti-chat
       contacts: [
         {
-          name: 'Michele',
+          name: 'Ottavio',
           avatar: '_1',
+          visible: true,
+          messages: [
+            {
+              date: '10/01/2020 15:30:55',
+              text: 'A che ora finisce la lezione?',
+              status: 'sent'
+            },
+            {
+              date: '10/01/2020 15:50:00',
+              text: 'La lezione è in loop, perchè ho sbagliato a scrivere il ciclo',
+              status: 'received'
+            },
+            {
+              date: '10/01/2020 15:51:00',
+              text: 'Quindi MAI! Ahahahahahaha!',
+              status: 'received'
+            }
+          ],
+        },
+        {
+          name: 'Zuckerberg',
+          avatar: '_2',
+          visible: true,
+          messages: [
+            {
+              date: '10/01/2020 15:50:00',
+              text: 'Ti piace la nuova versione di Facebook?',
+              status: 'received'
+            },
+            {
+              date: '10/01/2020 15:51:00',
+              text: 'Senti, è la quarantesima volta che me lo chiedi.',
+              status: 'sent'
+            }
+          ],
+        },
+        {
+          name: 'Freddie Mercury',
+          avatar: '_3',
+          visible: true,
+          messages: [
+            {
+              date: '10/01/2020 15:50:00',
+              text: 'I want to ride my bicycle =(',
+              status: 'received'
+            },
+            {
+              date: '10/01/2020 15:30:55',
+              text: 'La bicycle è ancora in assistenza, purtroppo',
+              status: 'sent'
+            },
+          ],
+        },
+        {
+          name: 'Clark Kent',
+          avatar: '_4',
+          visible: true,
+          messages: [
+            {
+              date: '10/01/2020 15:50:00',
+              text: 'Ho dimenticato gli occhiali a casa',
+              status: 'received'
+            },
+            {
+              date: '10/01/2020 15:30:55',
+              text: 'Superman!??? Ma dove è andato Clark?',
+              status: 'sent'
+            },
+          ],
+        },
+        {
+          name: 'Michele',
+          avatar: '_5',
           visible: true,
           messages: [
             {
@@ -30,7 +103,7 @@ new Vue({
         },
         {
           name: 'Fabio',
-          avatar: '_2',
+          avatar: '_6',
           visible: true,
           messages: [
             {
@@ -52,7 +125,7 @@ new Vue({
         },
         {
           name: 'Samuele',
-          avatar: '_3',
+          avatar: '_7',
           visible: true,
           messages: [
             {
@@ -74,7 +147,7 @@ new Vue({
         },
         {
           name: 'Luisa',
-          avatar: '_4',
+          avatar: '_8',
           visible: true,
           messages: [
             {
@@ -88,12 +161,12 @@ new Vue({
               status: 'received'
             }
           ],
-        },
+        }
       ],
       // Data corrente
       currentDate : {
-        day : ('0' + (new Date().getDate()+1)).slice(0, 2) ,
-        month :  ('0' + (new Date().getMonth()+1)).slice(0, 2) ,
+        day : ('0' + (new Date().getDate()+1)).slice(0, 2),
+        month :  ('0' + (new Date().getMonth()+1)).slice(0, 2),
         year : new Date().getFullYear(),
         hour : new Date().getHours(),
         min: new Date().getMinutes(),
