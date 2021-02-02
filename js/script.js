@@ -168,7 +168,7 @@ new Vue({
       // Chiave di ricerca
       searchKey : '',
       // Array Lista visualizzata
-      listOnDisplay : [],
+      listOnDisplay : this.contacts,
       // Mio messaggio
       myMsg : ''
     },
@@ -196,7 +196,7 @@ new Vue({
           this.listOnDisplay = this.contacts
         } else {
           this.listOnDisplay = this.contacts.filter((element) => {
-            return element.name == this.searchKey
+            return element.name === this.searchKey
           })
         }
       },

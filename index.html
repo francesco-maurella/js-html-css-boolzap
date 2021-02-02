@@ -57,9 +57,8 @@
           <section class="input-container flx centered">
             <div class="input-box flx centered kern16">
               <i class="fas fa-search"></i>
-              <input v-model="searchKey" laceholder="Cerca o inizia una nuova chat">
+              <input v-model="searchKey" @keyup="stampList" laceholder="Cerca o inizia una nuova chat">
             </div>
-            {{stampList()}}
           </section>
           <!-- / Search chat -->
 
@@ -99,7 +98,7 @@
                   {{contacts[selectedChat].name}}
                 </div>
                 <div class="txt-0x9 txt-col-gray">
-                  Ultimo accesso: {{getLastAccess()}}
+                  <!-- Ultimo accesso: {{getLastAccess()}} -->
                 </div>
               </div>
             </div>
