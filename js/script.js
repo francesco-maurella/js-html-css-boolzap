@@ -196,7 +196,7 @@ new Vue({
           this.listOnDisplay = this.contacts
         } else {
           this.listOnDisplay = this.contacts.filter((element) => {
-            return element.name = this.searchKey
+            return element.name == this.searchKey
           })
         }
       },
