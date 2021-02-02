@@ -165,6 +165,10 @@ new Vue({
       ],
       // Index contatto-chat selezionato
       selectedChat : 0,
+      // Chiave di ricerca
+      searchKey : '',
+      // Array Lista visualizzata
+      listOnDisplay : [],
       // Mio messaggio
       myMsg : ''
     },
@@ -186,10 +190,21 @@ new Vue({
         this.selectedChat = index;
       },
 
+      // Funzione ricerca
+      stampList : function(){
+        if (this.searchKey === '') {
+          this.listOnDisplay = this.contacts
+        } if (this.searchKey != this.contacts) {
+          this.listOnDisplay = this.contacts.filter((element)=>{
+            return element.name = this.searchKey
+          })
+        }
+      },
+
       // Funzione ultimo accesso
       getLastAccess : function(){
         // recuperiamo array di messaggi dell'index contatto selezionato
-        const msgs = this.contacts[this.selectedChat].messages;
+        const msgs = this.listOnDisplay[this.selectedChat].messages;
         // filtriamone solo i messaggi ricevuti
         const received = msgs.filter((element) => {
           return element.status === 'received';
@@ -217,7 +232,7 @@ new Vue({
         const currentDate = this.getCurrentDate();
         let {day, month, year, hour, min, sec} = currentDate;
         // recuperiamo array di messaggi dell'index contatto selezionato
-        const msgs = this.contacts[this.selectedChat].messages;
+        const msgs = this.listOnDisplay[this.selectedChat].messages;
         msgs.push({   // invio mio messaggio
           date : `${day}/${month}/${year} ${hour}:${min}:${sec}`,
           text : this.myMsg,

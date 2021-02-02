@@ -57,8 +57,12 @@
           <section class="input-container flx centered">
             <div class="input-box flx centered kern16">
               <i class="fas fa-search"></i>
-              <input placeholder="Cerca o inizia una nuova chat">
+              <input
+              v-model="searchKey"
+              v-on:keyup.enter="findCorrispondence"
+              placeholder="Cerca o inizia una nuova chat">
             </div>
+            {{stampList()}}
           </section>
           <!-- / Search chat -->
 
@@ -66,7 +70,7 @@
           <section class="user-list ofw-y">
             <!-- user in list -->
             <div
-            v-for="(elm, i) in contacts"
+            v-for="(elm, i) in listOnDisplay"
             class="user-list-row kern16 flx"
             @click="selectChat(i)">
               <div class="user-avatar">
