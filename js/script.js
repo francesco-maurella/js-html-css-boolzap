@@ -7,7 +7,7 @@ new Vue({
       // Lista contatti-chat
       contacts: [
         {
-          name: 'Ottavio',
+          name: 'Boolen teacher',
           avatar: '_1',
           visible: true,
           messages: [
@@ -192,7 +192,7 @@ new Vue({
         const msgs = this.contacts[this.selectedChat].messages;
         // filtriamone solo i messaggi ricevuti
         const received = msgs.filter((element) => {
-          return element.status === 'received'
+          return element.status === 'received';
         });
         // ritorniamo il valore data dell'ultimo messaggio
         return received[received.length - 1]['date'];
@@ -223,14 +223,22 @@ new Vue({
           text : this.myMsg,
           status : 'sent'
         });
-        this.myMsg = '';
         setTimeout(()=>{
-          msgs.push({   // riposta interlocutore, dopo circa 1 secondo
+          msgs.push({   // riposta dinamica interlocutore, dopo circa 1 secondo
             date : `${day}/${month}/${year} ${hour}:${min}:${sec}`,
-            text : 'Ok',
+            text : (msgs[msgs.length - 1]['text'] === 'Ciao') ? 'Ciao!' : 'Ok',
+
+            /*
+             text : {
+              'Ciao' : (msgs[msgs.length - 1]['text'] === 'Ciao'),
+              'Ok' : (msgs[msgs.length - 1]['text'] !== 'Ciao'),
+            }
+            */
+
             status : 'received'
           });
         }, 1500)
+        this.myMsg = ''; // l'input myMsg viene pulito
       }
     }
   });
