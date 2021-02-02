@@ -19,17 +19,18 @@
   <body>
 
     <div class="wrapper flx centered">
+
       <!-- APP CONTAINER -->
       <div id="app" class="container flx">
         <!-- LEFT Side-->
         <div class="left-sd">
           <!-- User-bar: data & links -->
           <section class="user-bar pdd-15 flx">
-            <!-- user data -->
+            <!-- user avatar -->
             <div class="flx al-cntr kern16">
               <img src="img/01.jpg" class="rounded" alt="user">
             </div>
-            <!-- / user data -->
+            <!-- / user avatar -->
             <!-- user links -->
             <nav class="flx al-cntr kern32 txt-1x4 txt-col-gray">
               <i class="fas fa-circle-notch"></i>
@@ -89,15 +90,19 @@
         <div class="right-sd">
           <!-- User-bar: data & links -->
           <section class="user-bar pdd-15 flx">
-            <!-- user data -->
+            <!-- user avatar & data -->
             <div class="flx al-cntr kern16">
               <img :src="'img/avatar' + contacts[selectedChat].avatar + '.jpg'" class="rounded" alt="user">
               <div>
-                <div class="txt-1x1">{{contacts[selectedChat].name}}</div>
-                <div class="txt-0x9 txt-col-gray">Ultimo accesso</div>
+                <div class="txt-1x1">
+                  {{contacts[selectedChat].name}}
+                </div>
+                <div class="txt-0x9 txt-col-gray">
+                  Ultimo accesso: {{getLastAccess()}}
+                </div>
               </div>
             </div>
-            <!-- / user data -->
+            <!-- / user avatar & data -->
             <!-- user links -->
             <nav class="flx al-cntr kern32 txt-1x4 txt-col-gray">
               <i class="fas fa-search"></i>
@@ -113,8 +118,9 @@
               <div v-for="(el, i) in contacts[selectedChat].messages">
                 <!-- column -->
                 <div class="main-discuss-col flx" :class="el.status">
-                  <div class="chat-box">
-                    {{el.text}}
+                  <div class="chat-box flx">
+                    <span>{{el.text}}</span>
+                    <span class="txt-col-gray txt-0x8">{{el.date.slice(11, 16)}}</span>
                   </div>
                 </div>
                 <!-- column -->
@@ -129,7 +135,7 @@
             <!-- write message -->
             <div class="input-box pdd-15 flx centerd">
               <input class="txt-0x7" v-model="myMsg"
-              v-on:keyup.enter="sendMsg" placeholder="Scrivi un messaggio">
+              v-on:keyup.enter="msgPass" placeholder="Scrivi un messaggio">
             </div>
             <!-- / write message -->
             <i class="fas fa-microphone"></i>
@@ -139,6 +145,7 @@
         <!-- / RIGHT Side -->
       </div>
       <!-- / APP CONTAINER -->
+
     </div>
 
     <script src="js/script.js" charset="utf-8"></script>

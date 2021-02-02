@@ -4,6 +4,7 @@ new Vue({
 
     // DATI //
     data : {
+      // Lista contatti-chat
       contacts: [
         {
           name: 'Michele',
@@ -89,29 +90,69 @@ new Vue({
           ],
         },
       ],
+      // Data corrente
+      currentDate : {
+        day : ('0' + (new Date().getDate()+1)).slice(0, 2) ,
+        month :  ('0' + (new Date().getMonth()+1)).slice(0, 2) ,
+        year : new Date().getFullYear(),
+        hour : new Date().getHours(),
+        min: new Date().getMinutes(),
+        sec: new Date().getSeconds()
+      },
+      // Index contatto-chat selezionato
       selectedChat : 0,
+      // Mio messaggio
       myMsg : ''
     },
     // METODI //
     methods : {
+      // Funzione ultimo valore (messaggio-data)
       getLastValue : function(element, value, cut){
+        // recuperiamo l'ultima value in messages, definendone una lunghezza max
         let last = element.messages[element.messages.length - 1][value].slice(0, cut);
+        // se lunghezza è uguale a lunghezza di caratteri max
         if (last.length > 5 && last.length === cut) {
           last += '...'
         }
         return last;
       },
+
+      // Funzione selezione index contatto-chat
       selectChat : function(index){
         this.selectedChat = index;
       },
-      sendMsg : function(){
+
+      // Funzione ultimo accesso
+      getLastAccess : function (){
+        // recuperiamo array di messaggi dell'index contatto selezionato
         const msgs = this.contacts[this.selectedChat].messages;
-        msgs.push({
-          date : '01/02/2020 00:00:00',
+        // filtriamone solo i messaggi ricevuti
+        const received = msgs.filter((element) => {
+          return element.status === 'received'
+        });
+        // ritorniamo il valore data dell'ultimo messaggio
+        return received[received.length - 1]['date'];
+      },
+
+      // Funzione scambio messaggi
+      msgPass : function(){
+        // destrutturazione data corrente
+        let {day, month, year, hour, min, sec} = this.currentDate;
+        // recuperiamo array di messaggi dell'index contatto selezionato
+        const msgs = this.contacts[this.selectedChat].messages;
+        msgs.push({   // invio mio messaggio
+          date : `${day}/${month}/${year} ${hour}:${min}:${sec}`,
           text : this.myMsg,
           status : 'sent'
         });
         this.myMsg = '';
+        setTimeout(()=>{
+          msgs.push({   // riposta interlocutore, dopo circa 1 secondo
+            date : `${day}/${month}/${year} ${hour}:${min}:${sec}`,
+            text : 'Ok',
+            status : 'received'
+          });
+        }, 1500)
       }
     }
   });
