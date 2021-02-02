@@ -194,8 +194,8 @@ new Vue({
       stampList : function(){
         if (this.searchKey === '') {
           this.listOnDisplay = this.contacts
-        } if (this.searchKey === 'Luisa') {
-          this.listOnDisplay = this.contacts.filter((element)=>{
+        } else {
+          this.listOnDisplay = this.contacts.filter((element) => {
             return element.name = this.searchKey
           })
         }
