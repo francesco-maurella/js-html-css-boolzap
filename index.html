@@ -48,7 +48,7 @@
             </div>
             <div>
               <div class="txt-1x1">Ricevi notifiche di nuovi messaggi</div>
-              <div class="txt-col-gray">Attiva notifiche descktop</div>
+              <div class="txt-col-gray">Attiva notifiche desktop</div>
             </div>
           </section>
           <!-- / Alerts section -->
@@ -57,7 +57,7 @@
           <section class="input-container flx centered">
             <div class="input-box flx centered kern16">
               <i class="fas fa-search"></i>
-              <input v-model="searchKey" @keyup="stampList" laceholder="Cerca o inizia una nuova chat">
+              <input v-model="searchKey" @keyup="findMatch" placeholder="Cerca o inizia una nuova chat">
             </div>
           </section>
           <!-- / Search chat -->
@@ -66,9 +66,9 @@
           <section class="user-list ofw-y">
             <!-- user in list -->
             <div
-            v-for="(elm, i) in listOnDisplay"
+            v-for="(elm, i) in contacts"
             class="user-list-row kern16 flx"
-            @click="selectChat(i)">
+            @click="selectChat(i)" v-show="elm.visible">
               <div class="user-avatar">
                 <img :src="'img/avatar' + elm.avatar + '.jpg'" class="rounded" alt="user">
               </div>

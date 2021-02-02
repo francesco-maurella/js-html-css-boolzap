@@ -180,7 +180,7 @@ body {
 
 /* User list */
 .user-list {
-  height: calc(100% - 200px);
+  max-height: calc(100% - 200px);
 }
 
 .user-list-row:hover {

@@ -7,7 +7,7 @@ new Vue({
       // Lista contatti-chat
       contacts: [
         {
-          name: 'Boolen teacher',
+          name: 'Ottavio',
           avatar: '_1',
           visible: true,
           messages: [
@@ -167,8 +167,6 @@ new Vue({
       selectedChat : 0,
       // Chiave di ricerca
       searchKey : '',
-      // Array Lista visualizzata
-      listOnDisplay : this.contacts,
       // Mio messaggio
       myMsg : ''
     },
@@ -191,20 +189,20 @@ new Vue({
       },
 
       // Funzione ricerca
-      stampList : function(){
-        if (this.searchKey === '') {
-          this.listOnDisplay = this.contacts
-        } else {
-          this.listOnDisplay = this.contacts.filter((element) => {
-            return element.name === this.searchKey
-          })
-        }
+      findMatch : function(){
+        this.contacts.forEach((element) => {
+          if (element.name === this.searchKey || !this.searchKey) {
+            element.visible = true;
+          } else {
+            element.visible = false;
+          }
+        });
       },
 
       // Funzione ultimo accesso
       getLastAccess : function(){
         // recuperiamo array di messaggi dell'index contatto selezionato
-        const msgs = this.listOnDisplay[this.selectedChat].messages;
+        const msgs = this.contacts[this.selectedChat].messages;
         // filtriamone solo i messaggi ricevuti
         const received = msgs.filter((element) => {
           return element.status === 'received';
@@ -232,7 +230,7 @@ new Vue({
         const currentDate = this.getCurrentDate();
         let {day, month, year, hour, min, sec} = currentDate;
         // recuperiamo array di messaggi dell'index contatto selezionato
-        const msgs = this.listOnDisplay[this.selectedChat].messages;
+        const msgs = this.contacts[this.selectedChat].messages;
         msgs.push({   // invio mio messaggio
           date : `${day}/${month}/${year} ${hour}:${min}:${sec}`,
           text : this.myMsg,
