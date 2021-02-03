@@ -123,7 +123,7 @@
                     <span>{{el.text}}</span>
                     <span class="txt-col-gray txt-0x8">{{el.date.slice(11, 16)}}</span>
                     <!-- message options -->
-                    <i class="fas fa-angle-down txt-col-gray" @click="toggleMenu(i)"></i>
+                    <i v-if="el.status === 'sent'" class="fas fa-angle-down txt-col-gray txt-1x6" @click="toggleMenu(i)"></i>
                     <ul class="msg-options pdd-15" v-if="menuVisibility.click === true && menuVisibility.index === i">
                     <li @click="deleteMsg(i)">Elimina Messaggio</li>
                   </ul>
