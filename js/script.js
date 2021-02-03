@@ -218,8 +218,8 @@ new Vue({
       getCurrentDate : function(){
         const today = new Date();
         return {
-          day : ('0' + (today.getDate()+1)).slice(0, 2),
-          month :  ('0' + (today.getMonth()+1)).slice(0, 2),
+          day : ('0' + today.getDate()).slice(-2),
+          month :  ('0' + (today.getMonth()+1)).slice(-2),
           year : today.getFullYear(),
           hour : today.getHours(),
           min: today.getMinutes(),
