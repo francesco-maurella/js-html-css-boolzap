@@ -167,8 +167,11 @@ new Vue({
       selectedChat : 0,
       // Chiave di ricerca
       searchKey : '',
-      // Visibilità elemento
-      visibility : undefined,
+      // Visibilità opzioni messaggio
+      menuVisibility : {
+        click : false,
+        index : false
+      },
       // Mio messaggio
       myMsg : ''
     },
@@ -230,8 +233,9 @@ new Vue({
       },
 
       // Funzione mostra opzioni-messaggio
-      showMsgOptions : function(index){
-        this.visibility = index;
+      toggleMenu : function(index){
+        this.menuVisibility.index = index;
+        this.menuVisibility.click = !this.menuVisibility.click;
       },
 
       // Funzione elimina messaggio

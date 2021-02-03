@@ -115,7 +115,7 @@
           <!-- Main chat area -->
           <section class="main-discuss ofw-y">
             <div class="main-discuss-container">
-              <div v-for="(el, i) in contacts[selectedChat].messages">
+              <div v-for="(el, i) in contacts[selectedChat].messages" @mouseleave="menuVisibility.click = false">
                 <!-- column -->
                 <div class="main-discuss-col flx" :class="el.status">
                   <!-- message box -->
@@ -123,8 +123,8 @@
                     <span>{{el.text}}</span>
                     <span class="txt-col-gray txt-0x8">{{el.date.slice(11, 16)}}</span>
                     <!-- message options -->
-                    <i class="fas fa-angle-down txt-col-gray" @click="showMsgOptions(i)"></i>
-                    <ul class="msg-options pdd-15" v-if="visibility === i">
+                    <i class="fas fa-angle-down txt-col-gray" @click="toggleMenu(i)"></i>
+                    <ul class="msg-options pdd-15" v-if="menuVisibility.click === true && menuVisibility.index === i">
                     <li @click="deleteMsg(i)">Elimina Messaggio</li>
                   </ul>
                   <!-- / message options -->
