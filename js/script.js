@@ -194,7 +194,7 @@ new Vue({
         let name;
         this.contacts.forEach((element) => {
           name = element.name.toLowerCase(); // name dell'elemnte in minuscolo
-          if ( name.includes(key) || !key) { // se name include key, oppure è vuota
+          if ( name.startsWith(key) || !key) { // se name include key, oppure è vuota
             element.visible = true;
           } else {
             element.visible = false;
