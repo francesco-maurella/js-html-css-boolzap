@@ -23,7 +23,7 @@ new Vue({
             },
             {
               date: '10/01/2020 15:51:00',
-              text: 'Quindi MAI! Ahahahahahaha!',
+              text: 'Quindi MAI... Ahahah!',
               status: 'received'
             }
           ],
@@ -191,7 +191,7 @@ new Vue({
       // Funzione ricerca
       findMatch : function(){
         this.contacts.forEach((element) => {
-          if (element.name === this.searchKey || !this.searchKey) {
+          if (this.searchKey === element.name || !this.searchKey) {
             element.visible = true;
           } else {
             element.visible = false;
@@ -236,7 +236,7 @@ new Vue({
           text : this.myMsg,
           status : 'sent'
         });
-        setTimeout(()=>{
+        setTimeout(() => {
           msgs.push({   // riposta dinamica interlocutore, dopo circa 1 secondo
             date : `${day}/${month}/${year} ${hour}:${min}:${sec}`,
             text : (msgs[msgs.length - 1]['text'] === 'Ciao') ? 'Ciao!' : 'Ok',
