@@ -167,6 +167,8 @@ new Vue({
       selectedChat : 0,
       // Chiave di ricerca
       searchKey : '',
+      // Visibilità elemento
+      visibility : undefined,
       // Mio messaggio
       myMsg : ''
     },
@@ -225,6 +227,16 @@ new Vue({
           min: today.getMinutes(),
           sec: today.getSeconds()
         }
+      },
+
+      // Funzione mostra opzioni-messaggio
+      showMsgOptions : function(index){
+        this.visibility = index;
+      },
+
+      // Funzione elimina messaggio
+      deleteMsg : function(index){
+        this.contacts[this.selectedChat].messages.splice(index, 1);
       },
 
       // Funzione scambio messaggi

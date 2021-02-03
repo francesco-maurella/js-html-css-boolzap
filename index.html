@@ -118,10 +118,18 @@
               <div v-for="(el, i) in contacts[selectedChat].messages">
                 <!-- column -->
                 <div class="main-discuss-col flx" :class="el.status">
-                  <div class="chat-box flx">
+                  <!-- message box -->
+                  <div class="msg-box flx">
                     <span>{{el.text}}</span>
                     <span class="txt-col-gray txt-0x8">{{el.date.slice(11, 16)}}</span>
+                    <!-- message options -->
+                    <i class="fas fa-angle-down txt-col-gray" @click="showMsgOptions(i)"></i>
+                    <ul class="msg-options pdd-15" v-if="visibility === i">
+                    <li @click="deleteMsg(i)">Elimina Messaggio</li>
+                  </ul>
+                  <!-- / message options -->
                   </div>
+                  <!-- / message box -->
                 </div>
                 <!-- column -->
               </div>
