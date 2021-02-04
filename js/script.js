@@ -18,12 +18,12 @@ new Vue({
             },
             {
               date: '10/01/2020 15:50:00',
-              text: 'La lezione è in loop, perchè ho sbagliato a scrivere il ciclo',
+              text: 'MAI!',
               status: 'received'
             },
             {
               date: '10/01/2020 15:51:00',
-              text: 'Quindi MAI... Ahahah!',
+              text: 'La lezione è in loop, perchè ho sbagliato a scrivere il ciclo',
               status: 'received'
             }
           ],
@@ -172,6 +172,8 @@ new Vue({
         click : false,
         index : false
       },
+      // Visibilità submit button
+      submitVisibility : false,
       // Mio messaggio
       myMsg : ''
     },
@@ -226,9 +228,9 @@ new Vue({
           day : ('0' + today.getDate()).slice(-2),
           month :  ('0' + (today.getMonth()+1)).slice(-2),
           year : today.getFullYear(),
-          hour : today.getHours(),
-          min: today.getMinutes(),
-          sec: today.getSeconds()
+          hour : ('0' + today.getHours()).slice(-2),
+          min: ('0' + today.getMinutes()).slice(-2),
+          sec: ('0' + today.getSeconds()).slice(-2)
         }
       },
 
@@ -236,6 +238,16 @@ new Vue({
       toggleMenu : function(index){
         this.menuVisibility.index = index;
         this.menuVisibility.click = !this.menuVisibility.click;
+      },
+
+      // Funzione toggle pulsante submit
+      toggleSubmit : function(index){
+        this.submitVisibility = !this.submitVisibility;
+      },
+
+      // Funzione nascondi pulsante submit
+      hideSubmit : function(index){
+        this.submitVisibility = false;
       },
 
       // Funzione elimina messaggio

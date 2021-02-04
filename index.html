@@ -57,7 +57,10 @@
           <section class="input-container flx centered">
             <div class="input-box flx centered kern16">
               <i class="fas fa-search"></i>
-              <input v-model="searchKey" @keyup="findMatch" placeholder="Cerca o inizia una nuova chat">
+              <input
+              v-model="searchKey" @keyup="findMatch"
+              placeholder="Cerca o inizia una nuova chat"
+              >
             </div>
           </section>
           <!-- / Search chat -->
@@ -68,16 +71,26 @@
             <div
             v-for="(elm, i) in contacts"
             class="user-list-row kern16 flx"
-            @click="selectChat(i)" v-show="elm.visible">
+            @click="selectChat(i)" v-show="elm.visible"
+            >
               <div class="user-avatar">
-                <img :src="'img/avatar' + elm.avatar + '.jpg'" class="rounded" alt="user">
+                <img
+                :src="'img/avatar' + elm.avatar + '.jpg'"
+                class="rounded" alt="user"
+                >
               </div>
               <div class="user-data flx">
                 <div class="flx">
-                  <span class="txt-1x1">{{elm.name}}</span>
-                  <span class="txt-0x9 txt-col-gray">{{getLastValue(elm, 'date', 5)}}</span>
+                  <span class="txt-1x1">
+                    {{elm.name}}
+                  </span>
+                  <span class="txt-0x9 txt-col-gray">
+                    {{getLastValue(elm, 'date', 5)}}
+                  </span>
                 </div>
-                <span class="txt-col-gray">{{getLastValue(elm, 'text', 40)}}</span>
+                <span class="txt-col-gray">
+                  {{getLastValue(elm, 'text', 40)}}
+                </span>
               </div>
             </div>
             <!-- / user in list -->
@@ -92,7 +105,10 @@
           <section class="user-bar pdd-15 flx">
             <!-- user avatar & data -->
             <div class="flx al-cntr kern16">
-              <img :src="'img/avatar' + contacts[selectedChat].avatar + '.jpg'" class="rounded" alt="user">
+              <img
+               :src="'img/avatar' + contacts[selectedChat].avatar + '.jpg'"
+               class="rounded" alt="user"
+               >
               <div>
                 <div class="txt-1x1">
                   {{contacts[selectedChat].name}}
@@ -115,16 +131,28 @@
           <!-- Main chat area -->
           <section class="main-discuss ofw-y">
             <div class="main-discuss-container">
-              <div v-for="(el, i) in contacts[selectedChat].messages" @mouseleave="menuVisibility.click = false">
+              <div
+              v-for="(el, i) in contacts[selectedChat].messages"
+              @mouseleave="menuVisibility.click = false"
+              >
                 <!-- column -->
                 <div class="main-discuss-col flx" :class="el.status">
                   <!-- message box -->
-                  <div class="msg-box flx">
+                  <div class="msg-box">
                     <span>{{el.text}}</span>
-                    <span class="txt-col-gray txt-0x8">{{el.date.slice(11, 16)}}</span>
+                    <span class="msg-hour txt-col-gray">
+                      {{el.date.slice(11, 16)}}
+                    </span>
                     <!-- message options -->
-                    <i v-if="el.status === 'sent'" class="fas fa-angle-down txt-col-gray txt-1x6" @click="toggleMenu(i)"></i>
-                    <ul class="msg-options pdd-15" v-if="menuVisibility.click === true && menuVisibility.index === i">
+                    <i
+                    v-show="el.status === 'sent'"
+                    class="fas fa-angle-down txt-col-gray txt-1x4"
+                    @click="toggleMenu(i)"
+                    ></i>
+                    <ul
+                    class="msg-options pdd-15"
+                    v-if="menuVisibility.click === true && menuVisibility.index === i"
+                    >
                     <li @click="deleteMsg(i)">Elimina Messaggio</li>
                   </ul>
                   <!-- / message options -->
@@ -135,18 +163,34 @@
               </div>
             </div>
           </section>
+
           <!-- / Main chat area -->
           <!-- Bottom bar -->
-          <section class="input-container flx centered kern16 txt-1x6">
+          <section
+          class="input-container flx centered kern16 txt-1x6"
+          @mouseleave="hideSubmit"
+          >
             <i class="far fa-grin"></i>
             <i class="fas fa-paperclip"></i>
             <!-- write message -->
-            <div class="input-box pdd-15 flx centerd">
-              <input class="txt-0x7" v-model="myMsg"
-              v-on:keyup.enter="msgPass" placeholder="Scrivi un messaggio">
+            <div
+            class="input-box pdd-15 flx centerd"
+            :class="{'input-box-focus' : submitVisibility,}"
+            >
+              <input
+              class="txt-0x7" v-model="myMsg"
+              @click="toggleSubmit" v-on:keyup.enter="msgPass"
+              placeholder="Scrivi un messaggio"
+              >
             </div>
             <!-- / write message -->
-            <i class="fas fa-microphone"></i>
+            <i class="fas"
+            @click="msgPass"
+            :class="{
+              'fa-paper-plane' : submitVisibility,
+              'fa-microphone' : !submitVisibility
+            }"
+            ></i>
           </section>
           <!-- / Bottom bar -->
         </div>
@@ -159,4 +203,4 @@
     <script src="js/script.js" charset="utf-8"></script>
 
   </body>
-  </html>
+</html>
