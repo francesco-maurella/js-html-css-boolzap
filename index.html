@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>HTML/CSS/JAVASCRIPT - SINGLE PAGE APP [Boolzap]</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google Fonts link -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
@@ -25,7 +24,7 @@
         <!-- LEFT Side-->
         <div class="left-sd">
           <!-- User-bar: data & links -->
-          <section class="user-bar pdd-15 flx">
+          <section class="usr-bar pdd-15 flx">
             <!-- user avatar -->
             <div class="flx al-cntr kern16">
               <img src="img/avatar_0.jpg" class="rounded" alt="user">
@@ -40,7 +39,6 @@
             <!-- / user links -->
           </section>
           <!-- / User-bar: data & links -->
-
           <!-- Alerts section -->
           <section class="alerts pdd-15 kern32 flx">
             <div>
@@ -52,34 +50,22 @@
             </div>
           </section>
           <!-- / Alerts section -->
-
           <!-- Search chat -->
-          <section class="input-container flx centered">
-            <div class="input-box flx centered kern16">
+          <section class="inp-cont flx centered">
+            <div class="inp-box flx centered kern16">
               <i class="fas fa-search"></i>
-              <input
-              v-model="searchKey" @keyup="findMatch"
-              placeholder="Cerca o inizia una nuova chat"
-              >
+              <input v-model="searchKey" @keyup="findMatch" placeholder="Cerca o inizia una nuova chat">
             </div>
           </section>
           <!-- / Search chat -->
-
           <!-- User list -->
-          <section class="user-list ofw-y">
+          <section class="usr-list ofw-y">
             <!-- user in list -->
-            <div
-            v-for="(elm, i) in contacts"
-            class="user-list-row kern16 flx"
-            @click="selectChat(i)" v-show="elm.visible"
-            >
-              <div class="user-avatar">
-                <img
-                :src="'img/avatar' + elm.avatar + '.jpg'"
-                class="rounded" alt="user"
-                >
+            <div class="usr-list-row kern16 flx" v-for="(elm, i) in contacts" v-show="showIf(elm)" @click="selectChat(i)">
+              <div class="usr-avatar">
+                <img :src="'img/avatar' + elm.avatar + '.jpg'" class="rounded" alt="user">
               </div>
-              <div class="user-data flx">
+              <div class="usr-data flx">
                 <div class="flx">
                   <span class="txt-1x1">
                     {{elm.name}}
@@ -88,7 +74,7 @@
                     {{getLastValue(elm, 'date', 5)}}
                   </span>
                 </div>
-                <span class="txt-col-gray">
+                <span  class="txt-col-gray">
                   {{getLastValue(elm, 'text', 40)}}
                 </span>
               </div>
@@ -98,17 +84,13 @@
           <!-- / User list -->
         </div>
         <!-- / LEFT Side -->
-
         <!-- RIGHT Side -->
         <div class="right-sd">
           <!-- User-bar: data & links -->
-          <section class="user-bar pdd-15 flx">
+          <section class="usr-bar pdd-15 flx">
             <!-- user avatar & data -->
             <div class="flx al-cntr kern16">
-              <img
-               :src="'img/avatar' + contacts[selectedChat].avatar + '.jpg'"
-               class="rounded" alt="user"
-               >
+              <img :src="'img/avatar' + contacts[selectedChat].avatar + '.jpg'" class="rounded" alt="user">
               <div>
                 <div class="txt-1x1">
                   {{contacts[selectedChat].name}}
@@ -127,16 +109,12 @@
             <!-- / user links -->
           </section>
           <!-- / User-bar: data & links -->
-
           <!-- Main chat area -->
           <section class="main-discuss ofw-y">
-            <div class="main-discuss-container">
-              <div
-              v-for="(el, i) in contacts[selectedChat].messages"
-              @mouseleave="menuVisibility.click = false"
-              >
+            <div class="main-discuss-cont">
+              <div v-for="(el, i) in contacts[selectedChat].messages" @mouseleave="hideMsgMenu()">
                 <!-- column -->
-                <div class="main-discuss-col flx" :class="el.status">
+                <div :class="'main-discuss-col flx ' + el.status">
                   <!-- message box -->
                   <div class="msg-box">
                     <span>{{el.text}}</span>
@@ -144,18 +122,11 @@
                       {{el.date.slice(11, 16)}}
                     </span>
                     <!-- message options -->
-                    <i
-                    v-show="el.status === 'sent'"
-                    class="fas fa-angle-down txt-col-gray txt-1x4"
-                    @click="toggleMenu(i)"
-                    ></i>
-                    <ul
-                    class="msg-options pdd-15"
-                    v-if="menuVisibility.click === true && menuVisibility.index === i"
-                    >
-                    <li @click="deleteMsg(i)">Elimina Messaggio</li>
-                  </ul>
-                  <!-- / message options -->
+                    <i class="fas fa-angle-down txt-col-gray txt-1x4" @click="toggMsgMenu(i)"></i>
+                    <ul class="msg-options pdd-15" :class="{active : toggMsgMenuIf(i)}">
+                      <li @click="deleteMsg(i)">Elimina Messaggio</li>
+                    </ul>
+                    <!-- / message options -->
                   </div>
                   <!-- / message box -->
                 </div>
@@ -163,34 +134,17 @@
               </div>
             </div>
           </section>
-
           <!-- / Main chat area -->
           <!-- Bottom bar -->
-          <section
-          class="input-container flx centered kern16 txt-1x6"
-          @mouseleave="hideSubmit"
-          >
+          <section class="inp-cont flx al-cntr kern16 txt-1x6" @mouseleave="hideSubmit()">
             <i class="far fa-grin"></i>
             <i class="fas fa-paperclip"></i>
             <!-- write message -->
-            <div
-            class="input-box pdd-15 flx centerd"
-            :class="{'input-box-focus' : submitVisibility,}"
-            >
-              <input
-              class="txt-0x7" v-model="myMsg"
-              @click="toggleSubmit" v-on:keyup.enter="msgPass"
-              placeholder="Scrivi un messaggio"
-              >
+            <div class="inp-box pdd-15 flx centerd" :class="{'inp-box-focus' : submitView}">
+              <input class="txt-0x7" v-model="myMsg" @click="toggleSubmit" v-on:keyup.enter="msgPass" placeholder="Scrivi un messaggio">
             </div>
             <!-- / write message -->
-            <i class="fas"
-            @click="msgPass"
-            :class="{
-              'fa-paper-plane' : submitVisibility,
-              'fa-microphone' : !submitVisibility
-            }"
-            ></i>
+            <i class="submit fas" @click="msgPass" :class="{'fa-paper-plane' : submitView, 'fa-microphone' : !submitView}"></i>
           </section>
           <!-- / Bottom bar -->
         </div>
